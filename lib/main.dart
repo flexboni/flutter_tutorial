@@ -11,9 +11,10 @@ class MyApp extends StatelessWidget {
   // A widget’s main job is to provide a build() method that describes how to display the widget in terms of other, lower level widgets.
   @override
   Widget build(BuildContext context) {
-    final wordPair = WordPair.random();
-
-    return MaterialApp(title: 'Startup Name Generator', home: RandomWords());
+    return MaterialApp(
+        title: 'Startup Name Generator',
+        theme: ThemeData(primaryColor: Colors.white),
+        home: RandomWords());
   }
 }
 
