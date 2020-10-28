@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 
@@ -18,8 +16,12 @@ class MyApp extends StatelessWidget {
   }
 }
 
-// start typing stful. The editor asks if you want to create a Stateful widget.
-//Press Return to accept. The boilerplate code for two classes appears, and the cursor is positioned for you to enter the name of your stateful widget.
+/* 1. start typing 'stful'.
+ * 2. The editor asks if you want to create a Stateful widget.
+ * 3. Press Return to accept.
+ * The boilerplate code for two classes appears,
+ * and the cursor is positioned for you to enter the name of your stateful widget.
+*/
 class RandomWords extends StatefulWidget {
   @override
   _RandomWordsState createState() => _RandomWordsState();
