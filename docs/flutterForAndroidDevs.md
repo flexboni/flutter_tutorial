@@ -56,12 +56,39 @@ If you wanna build the source, change 'main2.dart' to 'main.dart'
 
 Widgets are immutable there is no direct equivalent to 'addChild()'. Instead, you can pass a function to the parent that returns a widget, and control that child' creation with a boolean flag.
 
-## Example
+### Example
 
 How you can toggle between two widgets when you click on a FloatingActionButton!
 
-### For build
+#### For build
 
 Dir : lib -> main3.dart
 
 If you wanna build the source, change 'main3.dart' to 'main.dart'
+
+</br>
+
+## How do i animate a widget?
+
+### In Android
+
+Create animations using XML, or call the 'animate()' method on a view.
+
+### In Flutter
+
+Animate widgets using the animation library by wrapping widgets inside an animated widget.</br>
+Use an 'AnimationController' which is an 'Animation< double>' that can pause, seek, stop and reverse the animation. It requires a 'Ticker' that signals when [vsync](https://dict.naver.com/search.nhn?dicQuery=vsync&query=vsync&target=dic&ie=utf8&query_utf=&isOnlyViewEE=) happens, and produces a linear interpolation between 0 and 1 on each frame while it's running.
+
+### For example
+
+The following example shows how to write a **FadeTransition** that fades the widget into a logo when you press the **FloatingActionButton**:
+
+#### For build
+
+Dir : lib -> main4.dart
+
+If you wanna build the source, change 'main4.dart' to 'main.dart'
+
+### For more information
+
+See [Animation & Motion widgets](https://flutter.dev/docs/development/ui/widgets/animation), the [Animations tutorial](https://flutter.dev/docs/development/ui/animations/tutorial), and the [Animations overview](https://flutter.dev/docs/development/ui/animations).
