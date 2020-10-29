@@ -1,5 +1,11 @@
 # Flutter for Android developers
 
+## For build
+
+Dir : lib -> main2.dart
+
+If you wanna build the source, change 'main2.dart' to 'main.dart'
+
 ## What is the equivalent of a View in Flutter?
 
 In Flutter, the rough equivalent to a **View** is a **Widget**.</br>
@@ -41,59 +47,3 @@ However, if a widget reacts to change, the containing parent widget can still be
 ### StatelessWidget + StatefulWidget Example
 
 If you wanna make "I Like Flutter" change dynamically when cliking a FloatingActionButton, achieve this, wrap the 'Text' widget in a StatefulWidget and update it when the user clicks the button.
-
-```
-import 'package:flutter/material.dart';
-
-void main() {
-    runApp(SampleApp());
-}
-
-class SampleApp extends StatelessWidget {
-    @override
-    Widget build(BuildContext context) {
-        return MaterialApp(
-            title: 'Sample App',
-            theme: ThemeData(
-                primarySwatch: Colors.blue,
-            ),
-            home: SampleAppPage(),
-        );
-    }
-}
-
-class SampleAppPage extend StatefulWidget {
-    SampleAppPage({Key key}) : super(key: key);
-
-    @override
-    SampleAppPage createState() => _SampleAppPage();
-}
-
-class _SampleAppPageState extends State<SampleAppPage> {
-    // Default placeholder text
-    final textToShow = "I Like Flutter";
-
-    void _updateText() {
-        setState(() {
-            // update the text
-            textToShow = "Flutter is Awesome!;
-        });
-    }
-
-    @override
-    Widget build(BuildContext context) {
-        return Scaffold(
-            appBar: Appbar(
-                title: Text("Sample App"),
-            ),
-            body: Center(child: Text(textToShow)),
-            floatingActionButton: FloatingActionButton(
-                onPressed: _updateText,
-                tooltip: 'Update Text',
-                child: Icon(Icons.update),
-            ),
-        );
-    }
-}
-
-```
