@@ -45,3 +45,21 @@ Dir : lib -> devmain2.dart
 If you wanna build the source, change 'devmain2.dart' to 'main.dart'
 
 The Scaffold widget takes a number of different widgets as named arguments, each of which are placed in the Scaffold layout in the appropriate place
+
+</br>
+
+## [Handling Gesture](https://flutter.dev/docs/development/ui/widgets-intro#handling-gestures)
+
+The first step in building an interactive application is to detect input gestures.
+
+## [For example](https://github.com/flexboni/flutter_tutorial/blob/master/lib/devmain3.dart) <- Click
+
+#### build
+
+Dir : lib -> devmain3.dart
+
+If you wanna build the source, change 'devmain3.dart' to 'main.dart'
+
+When the user taps the **Container**, the **GestureDetector** calls its _onTap()_ callback, in this case printing a message to the console. You can use **GestureDetector** to detect a variety of input gestures, including taps, drags, and scales.
+
+Many widgets use a **GestureDetector** to provide optional callbacks for other widgets which have _onPressed()_ callback.
