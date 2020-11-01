@@ -92,3 +92,9 @@ If you wanna build the source, change 'main4.dart' to 'main.dart'
 ### For more information
 
 See [Animation & Motion widgets](https://flutter.dev/docs/development/ui/widgets/animation), the [Animations tutorial](https://flutter.dev/docs/development/ui/animations/tutorial), and the [Animations overview](https://flutter.dev/docs/development/ui/animations).
+
+
+
+
+
+https://flutter.dev/docs/get-started/flutter-for/android-devs#how-do-i-use-a-canvas-to-drawpaint
