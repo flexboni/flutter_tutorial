@@ -63,3 +63,41 @@ If you wanna build the source, change 'devmain3.dart' to 'main.dart'
 When the user taps the **Container**, the **GestureDetector** calls its _onTap()_ callback, in this case printing a message to the console. You can use **GestureDetector** to detect a variety of input gestures, including taps, drags, and scales.
 
 Many widgets use a **GestureDetector** to provide optional callbacks for other widgets which have _onPressed()_ callback.
+
+</br>
+
+## [Changing widgets in response to input](https://flutter.dev/docs/development/ui/widgets-intro#changing-widgets-in-response-to-input)
+
+Stateless widgets receive arguments from their parent widget, which they store in _final_ member variables. When a widget is asked to _build()_, it uses these stored values to derive new arguments for the widgets it creates.
+
+In order to build more complex experiences—for example, to react in more interesting ways to user input—applications typically carry some _state_. Flutter uses **StatefulWidgets** to capture this idea. **StatefulWidgets** are special widgets that know how to generate _State_ objects, which are then used to hold state.
+
+## [For example](https://github.com/flexboni/flutter_tutorial/blob/master/lib/devmain4.dart) <- Click
+
+Using the **ElevatedButton** mentioned earlier.
+
+You might wonder why StatefulWidget and State are separate objects. In Flutter, these two types of objects have different life cycles. Widgets are temporary objects, used to construct a presentation of the application in its current state. State objects, on the other hand, are persistent between calls to build(), allowing them to remember information.
+
+The example above accepts user input and directly uses the result in its build() method. In more complex applications, different parts of the widget hierarchy might be responsible for different concerns.
+
+In Flutter, change notifications flow “up” the widget hierarchy by way of callbacks, while current state flows “down” to the stateless widgets that do presentation. The common parent that redirects this flow is the State.
+
+#### build
+
+Dir : lib -> devmain4.dart
+
+If you wanna build the source, change 'devmain4.dart' to 'main.dart'
+
+## [For example](https://github.com/flexboni/flutter_tutorial/blob/master/lib/devmain5.dart) <- Click
+
+The following slightly more complex example shows how this works in practice:
+
+Notice the creation of two new stateless widgets, cleanly separating the concerns of displaying the counter **(CounterDisplay)** and changing the counter **(CounterIncrementor)**.
+
+Although the net result is the same as the previous example, the separation of responsibility allows greater complexity to be _encapsulated in the individual_ widgets, while maintaining simplicity in the parent.
+
+#### build
+
+Dir : lib -> devmain5.dart
+
+If you wanna build the source, change 'devmain5.dart' to 'main.dart'
