@@ -101,3 +101,36 @@ Although the net result is the same as the previous example, the separation of r
 Dir : lib -> devmain5.dart
 
 If you wanna build the source, change 'devmain5.dart' to 'main.dart'
+
+</br>
+
+## [Bringing it all together](https://flutter.dev/docs/development/ui/widgets-intro#bringing-it-all-together)
+
+What follows is a more complete example that brings together these concepts: A hypothetical shopping application displays various products offered for sale, and maintains a shopping cart for intended purchases.
+
+## [For example](https://github.com/flexboni/flutter_tutorial/blob/master/lib/ShoppingListItem.dart)
+
+Start by defining the presentation class, **ShoppingListItem**:
+
+The **ShoppingListItem** widget follows a common pattern for stateless widgets. It stores the values it receives in its constructor in final member variables, which it then uses during its **build()** function. For example, the **inCart** boolean toggles between two visual appearances: one that uses the primary color from the current theme, and another that uses gray.
+
+When the user taps the list item, the widget doesn’t modify its **inCart** value directly. Instead, the widget calls the **onCartChanged** function it received from its parent widget. This pattern lets you store state higher in the widget hierarchy, which causes the state to persist for longer periods of time. In the extreme, the state stored on the widget passed to **runApp()** persists for the lifetime of the application.
+
+When the parent receives the **onCartChanged** callback, the parent updates its internal state, which triggers the parent to rebuild and create a new instance of **ShoppingListItem** with the new **inCart** value. Although the parent creates a new instance of **ShoppingListItem** when it rebuilds, that operation is cheap because the framework compares the newly built widgets with the previously built widgets and applies only the differences to the underlying RenderObject.
+
+Here’s an example parent widget that stores mutable state:
+
+## [For example](https://github.com/flexboni/flutter_tutorial/blob/master/lib/shoppingmain.dart) <- Click
+
+#### build
+
+Dir : lib -> shoppingmain.dart
+
+If you wanna build the source, change 'shoppingmain.dart' to 'main.dart'
+
+The ShoppingList class extends StatefulWidget, which means this widget stores mutable state. When the ShoppingList widget is first inserted into the tree, the framework calls the createState() function to create a fresh instance of _ShoppingListState to associate with that location in the tree. (Notice that subclasses of State are typically named with leading underscores to indicate that they are private implementation details.) When this widget’s parent rebuilds, the parent creates a new instance of ShoppingList, but the framework reuses the _ShoppingListState instance that is already in the tree rather than calling createState again.
+
+To access properties of the current ShoppingList, the _ShoppingListState can use its widget property. If the parent rebuilds and creates a new ShoppingList, the _ShoppingListState rebuilds with the new widget value. If you wish to be notified when the widget property changes, override the didUpdateWidget() function, which is passed an oldWidget to let you compare the old widget with the current widget.
+
+When handling the onCartChanged callback, the _ShoppingListState mutates its internal state by either adding or removing a product from _shoppingCart. To signal to the framework that it changed its internal state, it wraps those calls in a setState() call. Calling setState marks this widget as dirty and schedules it to be rebuilt the next time your app needs to update the screen. If you forget to call setState when modifying the internal state of a widget, the framework won’t know your widget is dirty and might not call the widget’s build() function, which means the user interface might not update to reflect the changed state. By managing state in this way, you don’t need to write separate code for creating and updating child widgets. Instead, you simply implement the build function, which handles both situations.
+
