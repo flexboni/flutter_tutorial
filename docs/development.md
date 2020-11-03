@@ -134,3 +134,22 @@ To access properties of the current ShoppingList, the _ShoppingListState can use
 
 When handling the onCartChanged callback, the _ShoppingListState mutates its internal state by either adding or removing a product from _shoppingCart. To signal to the framework that it changed its internal state, it wraps those calls in a setState() call. Calling setState marks this widget as dirty and schedules it to be rebuilt the next time your app needs to update the screen. If you forget to call setState when modifying the internal state of a widget, the framework won’t know your widget is dirty and might not call the widget’s build() function, which means the user interface might not update to reflect the changed state. By managing state in this way, you don’t need to write separate code for creating and updating child widgets. Instead, you simply implement the build function, which handles both situations.
 
+## [Responding to widget lifecycle events](https://flutter.dev/docs/development/ui/widgets-intro#responding-to-widget-lifecycle-events)
+
+After calling _createState()_ on the **StatefulWidget**, the framework inserts the new state object into the tree and then calls _initState()_ on the state object. A subclass of _State_ can override _initState_ to do work that needs to happen just once. For example, override _initState_ to configure animations or to subscribe to platform services. Implementations of _initState_ are required to start by calling _super.initState_.
+
+When a state object is no longer needed, the framework calls _dispose()_ on the state object. Override the _dispose_ function to do cleanup work. For example, override _dispose_ to cancel timers or to unsubscribe from platform services. Implementations of _dispose_ typically end by calling _super.dispose_.
+
+## [Keys](https://flutter.dev/docs/development/ui/widgets-intro#keys)
+
+Use keys to control which widgets the framework matches up with other widgets when a widget rebuilds. By default, the framework matches widgets in the current and previous build according to their _runtimeType_ and the order in which they appear. With keys, the framework requires that the two widgets have the same _key_ as well as the same _runtimeType_.
+
+Keys are most useful in widgets that build many instances of the same type of widget. For example, the _ShoppingList_ widget, which builds just enough _ShoppingListItem_ instances to fill its visible region:
+
+* Without keys, the first entry in the current build would always sync with the first entry in the previous build, even if, semantically, the first entry in the list just scrolled off screen and is no longer visible in the viewport.
+
+* By assigning each entry in the list a “semantic” key, the infinite list can be more efficient because the framework syncs entries with matching semantic keys and therefore similar (or identical) visual appearances. Moreover, syncing the entries semantically means that state retained in stateful child widgets remains attached to the same semantic entry rather than the entry in the same numerical position in the viewport.
+
+## [Global keys](https://flutter.dev/docs/development/ui/widgets-intro#global-keys)
+
+**Use global keys to uniquely identify child widgets.** _Global keys_ must be globally **unique** across the entire widget hierarchy, unlike local keys which need only be unique among siblings. Because they are globally unique, a global key can be used _to retrieve the state associated with a widget_.
