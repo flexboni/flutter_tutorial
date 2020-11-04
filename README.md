@@ -20,3 +20,8 @@ samples, guidance on mobile development, and a full API reference.
 - you’ll want to use Flutter’s “profile” or “release” build modes. For more details, see [Flutter’s build modes](https://flutter.dev/docs/testing/build-modes)
 - Important: If you’re concerned about the package size of your app, see [Measuring your app’s size](https://flutter.dev/docs/perf/app-size)
 - This codelab is part 1 of a two-part codelab. You can find part 2 on [Google Developers Codelabs](https://codelabs.developers.google.com/codelabs/first-flutter-app-pt2/#0) (as well as a copy of this codelab, part 1).
+
+## Docs
+
+I'm studying Flutter in Flutter dev Homepage, and Note some information.
+Check in Docs directory
