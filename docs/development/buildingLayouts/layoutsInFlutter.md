@@ -95,7 +95,7 @@ class MyApp extends StatelessWidget {
   }
 ```
 
-[Material Example](https://github.com/flexboni/flutter_tutorial/blob/master/lib/materialmain1.dart)
+[Material Example](https://github.com/flexboni/flutter_tutorial/blob/master/examples\development\buildingLayouts\materialApp)
 
 #### [Non-Material apps](https://flutter.dev/docs/development/ui/layout#non-material-apps)
 
@@ -124,6 +124,7 @@ class MyApp extends StatelessWidget {
 }
 ```
 
-By default a non-Material app doesn’t include an **AppBar**, title, or background color. If you want these features in a non-Material app, _you have to build them yourself._
+By default a non-Material app doesn’t include an
+*AppBar**, title, or background color. If you want these features in a non-Material app, _you have to build them yourself._
 
 [non-Material Example](https://github.com/flexboni/flutter_tutorial/blob/master/lib/nonmaterialmain1.dart)
