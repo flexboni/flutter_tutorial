@@ -95,7 +95,7 @@ class MyApp extends StatelessWidget {
   }
 ```
 
-[Material Example](https://github.com/flexboni/flutter_tutorial/blob/master/examples\development\buildingLayouts\materialApp)
+[Material Example](https://github.com/flexboni/flutter_tutorial/tree/master/examples/development/buildingLayouts/materialApp)
 
 #### [Non-Material apps](https://flutter.dev/docs/development/ui/layout#non-material-apps)
 
@@ -127,7 +127,7 @@ class MyApp extends StatelessWidget {
 By default a non-Material app doesn’t include an
 *AppBar**, title, or background color. If you want these features in a non-Material app, _you have to build them yourself._
 
-[non-Material Example](https://github.com/flexboni/flutter_tutorial/blob/master/lib/nonmaterialmain1.dart)
+[non-Material Example](https://github.com/flexboni/flutter_tutorial/tree/master/examples/development/buildingLayouts/nonMaterialApp)
 
 </br>
 
@@ -155,3 +155,40 @@ The left column’s widget tree nests rows and columns.
 
     Note> Row and Column are basic primitive widgets for  horizontal and vertical layouts—these low-level widgets allow for maximum customization. Flutter also offers specialized, higher level widgets that might be sufficient for your needs.
 
+</br>
+
+## [Aligning widgets](https://flutter.dev/docs/development/ui/layout#aligning-widgets)
+
+You control how a row or column aligns its children using the **mainAxisAlignment** and **crossAxisAlignment** properties. _For a row_, _the main axis runs horizontally_ and the cross axis runs vertically. _For a column_, _the main axis runs vertically_ and the cross axis runs horizontally.
+
+![image](https://user-images.githubusercontent.com/29271126/98203986-7b4b4880-1f78-11eb-871f-0dc9f0c6dad4.png)
+
+### Row & Column Example
+
+[App Source](https://github.com/flexboni/flutter_tutorial/tree/master/examples/development/buildingLayouts/rowColumn)
+
+Each of the 3 images is 100 pixels wide. The render box (in this case, the entire screen) is more than 300 pixels wide, so setting the main axis alignment to spaceEvenly divides the free horizontal space evenly between, before, and after each image.
+
+```
+Row(
+  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+  children: [
+    Image.asset('images/pic1.jpg'),
+    Image.asset('images/pic2.jpg'),
+    Image.asset('images/pic3.jpg'),
+  ],
+);
+```
+
+Columns work the same way as rows. The following example shows a column of 3 images, each is 100 pixels high. The height of the render box (in this case, the entire screen) is more than 300 pixels, so setting the main axis alignment to spaceEvenly divides the free vertical space evenly between, above, and below each image.
+
+```
+Column(
+  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+  children: [
+    Image.asset('images/pic1.jpg'),
+    Image.asset('images/pic2.jpg'),
+    Image.asset('images/pic3.jpg'),
+  ],
+);
+```
