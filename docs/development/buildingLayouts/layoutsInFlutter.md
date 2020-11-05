@@ -128,3 +128,30 @@ By default a non-Material app doesn’t include an
 *AppBar**, title, or background color. If you want these features in a non-Material app, _you have to build them yourself._
 
 [non-Material Example](https://github.com/flexboni/flutter_tutorial/blob/master/lib/nonmaterialmain1.dart)
+
+</br>
+
+## [Lay out multiple widgets vertically and horizontally](https://flutter.dev/docs/development/ui/layout#lay-out-multiple-widgets-vertically-and-horizontally)
+
+You can use a **Row** widget to arrange widgets horizontally, and a **Column** widget to arrange widgets vertically.
+
+### What's the point?
+
+* Row and Column are two of the most commonly used layout patterns.
+* Row and Column each take a list of child widgets.
+* A child widget can itself be a Row, Column, or other complex widget.
+* You can specify how a Row or Column aligns its children, both vertically and horizontally.
+* You can stretch or constrain specific child widgets.
+* You can specify how child widgets use the Row’s or Column’s available space.
+
+This layout is organized as a Row. The row contains two children: a column on the left, and an image on the right:
+
+![image](https://user-images.githubusercontent.com/29271126/98202990-8ac99200-1f76-11eb-84d5-5e0fc0f42a82.png)
+
+The left column’s widget tree nests rows and columns.
+
+![image](https://user-images.githubusercontent.com/29271126/98203108-cb291000-1f76-11eb-8b1c-60554a272800.png)
+
+
+    Note> Row and Column are basic primitive widgets for  horizontal and vertical layouts—these low-level widgets allow for maximum customization. Flutter also offers specialized, higher level widgets that might be sufficient for your needs.
+
