@@ -192,3 +192,17 @@ Column(
   ],
 );
 ```
+
+</br>
+
+## [Sizing widgets]()
+
+When a layout is too large to fit a device, a yellow and black striped pattern appears along the affected edge.
+
+![image](https://user-images.githubusercontent.com/29271126/98370168-7b813c00-207d-11eb-8a3a-a2b6b352f053.png)
+
+
+
+
+// Sizing widgets
+
