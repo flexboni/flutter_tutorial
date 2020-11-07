@@ -201,7 +201,34 @@ When a layout is too large to fit a device, a yellow and black striped pattern a
 
 ![image](https://user-images.githubusercontent.com/29271126/98370168-7b813c00-207d-11eb-8a3a-a2b6b352f053.png)
 
+Widgets can be sized to fit within a row or column by using the **Expanded** widget. To fix the previous example where the row of images is too wide for its render box, wrap each image with an **Expanded** widget.
 
+```
+Row(
+  crossAxisAlignment: CrossAxisAlignment.center,
+  children: [
+    Expanded(
+      child: Image.asset('images/pic1.jpg'),
+    ),
+    Expanded(
+      child: Image.asset('images/pic2.jpg'),
+    ),
+    Expanded(
+      child: Image.asset('images/pic3.jpg'),
+    ),
+  ],
+);
+```
+
+![image](https://user-images.githubusercontent.com/29271126/98443807-30d0f400-2151-11eb-8842-fc8911667159.png)
+
+[App Source](https://github.com/flexboni/flutter_tutorial/tree/master/examples/development/buildingLayouts/sizing)
+
+Perhaps you want a widget to occupy twice as much space as its siblings. For this, use the **Expanded** widget _flex_ property, an integer that determines the _flex_ factor for a widget. The default _flex_ factor is 1. The following code sets the _flex_ factor of the middle image to 2:
+
+![image](https://user-images.githubusercontent.com/29271126/98443839-72619f00-2151-11eb-9c28-ad7bc4741b47.png)
+
+[App Source](https://github.com/flexboni/flutter_tutorial/tree/master/examples/development/buildingLayouts/sizing2)
 
 
 // Sizing widgets
