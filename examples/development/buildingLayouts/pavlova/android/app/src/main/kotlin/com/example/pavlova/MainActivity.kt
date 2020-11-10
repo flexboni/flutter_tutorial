@@ -1,4 +1,4 @@
-package com.example.sizing2
+package com.example.pavlova
 
 import io.flutter.embedding.android.FlutterActivity
 

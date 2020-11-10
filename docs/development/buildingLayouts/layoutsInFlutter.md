@@ -195,7 +195,7 @@ Column(
 
 </br>
 
-## [Sizing widgets]()
+## [Sizing widgets](https://flutter.dev/docs/development/ui/layout#sizing-widgets)
 
 When a layout is too large to fit a device, a yellow and black striped pattern appears along the affected edge.
 
@@ -230,6 +230,25 @@ Perhaps you want a widget to occupy twice as much space as its siblings. For thi
 
 [App Source](https://github.com/flexboni/flutter_tutorial/tree/master/examples/development/buildingLayouts/sizing2)
 
+</br>
 
-// Sizing widgets
+## [Packing Widget](https://flutter.dev/docs/development/ui/layout#packing-widgets)
 
+By default, a row or column occupies as much space along its main axis as possible, _but if you want to pack the children closely together,_ set its **mainAxisSize** to **MainAxisSize.min**. The following example uses this property to pack the star icons together.
+
+```
+Row(
+  mainAxisSize: MainAxisSize.min,
+  children: [
+    Icon(Icons.star, color: Colors.green[500]),
+    Icon(Icons.star, color: Colors.green[500]),
+    Icon(Icons.star, color: Colors.green[500]),
+    Icon(Icons.star, color: Colors.black),
+    Icon(Icons.star, color: Colors.black),
+  ],
+)
+```
+
+![image](https://user-images.githubusercontent.com/29271126/98633599-12dbdd00-2365-11eb-85ef-2feff55c049a.png)
+
+[App Source](https://github.com/flexboni/flutter_tutorial/tree/master/examples/development/buildingLayouts/pavlova)
