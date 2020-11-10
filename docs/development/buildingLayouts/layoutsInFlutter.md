@@ -157,7 +157,7 @@ The left column’s widget tree nests rows and columns.
 
 </br>
 
-## [Aligning widgets](https://flutter.dev/docs/development/ui/layout#aligning-widgets)
+### [Aligning widgets](https://flutter.dev/docs/development/ui/layout#aligning-widgets)
 
 You control how a row or column aligns its children using the **mainAxisAlignment** and **crossAxisAlignment** properties. _For a row_, _the main axis runs horizontally_ and the cross axis runs vertically. _For a column_, _the main axis runs vertically_ and the cross axis runs horizontally.
 
@@ -195,7 +195,7 @@ Column(
 
 </br>
 
-## [Sizing widgets](https://flutter.dev/docs/development/ui/layout#sizing-widgets)
+### [Sizing widgets](https://flutter.dev/docs/development/ui/layout#sizing-widgets)
 
 When a layout is too large to fit a device, a yellow and black striped pattern appears along the affected edge.
 
@@ -232,7 +232,7 @@ Perhaps you want a widget to occupy twice as much space as its siblings. For thi
 
 </br>
 
-## [Packing Widget](https://flutter.dev/docs/development/ui/layout#packing-widgets)
+### [Packing Widget](https://flutter.dev/docs/development/ui/layout#packing-widgets)
 
 By default, a row or column occupies as much space along its main axis as possible, _but if you want to pack the children closely together,_ set its **mainAxisSize** to **MainAxisSize.min**. The following example uses this property to pack the star icons together.
 
@@ -252,3 +252,299 @@ Row(
 ![image](https://user-images.githubusercontent.com/29271126/98633599-12dbdd00-2365-11eb-85ef-2feff55c049a.png)
 
 [App Source](https://github.com/flexboni/flutter_tutorial/tree/master/examples/development/buildingLayouts/pavlova)
+
+</br>
+
+### [Nesting rows and columns](https://flutter.dev/docs/development/ui/layout#nesting-rows-and-columns)
+
+The layout framework allows you to _nest rows and columns inside of rows and columns as deeply as you need_. Let’s look at the code for the outlined section of the following layout:
+
+![image](https://user-images.githubusercontent.com/29271126/98673896-5b15f200-239b-11eb-902c-375ed463fb01.png)
+
+The outlined section is implemented as two rows. The ratings row contains five stars and the number of reviews. The icons row contains three columns of icons and text.
+
+The widget tree for the ratings row:
+
+![image](https://user-images.githubusercontent.com/29271126/98673990-839dec00-239b-11eb-86d4-3d7ba19f913a.png)
+
+The _ratings_ variable creates a row containing a smaller row of 5 star icons, and text:
+
+```
+var stars = Row(
+  mainAxisSize: MainAxisSize.min,
+  children: [
+    Icon(Icons.star, color: Colors.green[500]),
+    Icon(Icons.star, color: Colors.green[500]),
+    Icon(Icons.star, color: Colors.green[500]),
+    Icon(Icons.star, color: Colors.black),
+    Icon(Icons.star, color: Colors.black),
+  ],
+);
+
+final ratings = Container( // <= Here!!
+  padding: EdgeInsets.all(20),
+  child: Row(
+    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    children: [
+      stars,
+      Text(
+        '170 Reviews',
+        style: TextStyle(
+          color: Colors.black,
+          fontWeight: FontWeight.w800,
+          fontFamily: 'Roboto',
+          letterSpacing: 0.5,
+          fontSize: 20,
+        ),
+      ),
+    ],
+  ),
+);
+```
+
+The icons row, below the ratings row, contains 3 columns; each column contains an icon and two lines of text, as you can see in its widget tree:
+
+![image](https://user-images.githubusercontent.com/29271126/98674239-df687500-239b-11eb-9bb9-835d5128e885.png)
+
+The _iconList_ variable defines the icons row:
+
+```
+final descTextStyle = TextStyle(
+  color: Colors.black,
+  fontWeight: FontWeight.w800,
+  fontFamily: 'Roboto',
+  letterSpacing: 0.5,
+  fontSize: 18,
+  height: 2,
+);
+
+// DefaultTextStyle.merge() allows you to create a default text
+// style that is inherited by its child and all subsequent children.
+final iconList = DefaultTextStyle.merge(
+  style: descTextStyle,
+  child: Container(
+    padding: EdgeInsets.all(20),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        Column(
+          children: [
+            Icon(Icons.kitchen, color: Colors.green[500]),
+            Text('PREP:'),
+            Text('25 min'),
+          ],
+        ),
+        Column(
+          children: [
+            Icon(Icons.timer, color: Colors.green[500]),
+            Text('COOK:'),
+            Text('1 hr'),
+          ],
+        ),
+        Column(
+          children: [
+            Icon(Icons.restaurant, color: Colors.green[500]),
+            Text('FEEDS:'),
+            Text('4-6'),
+          ],
+        ),
+      ],
+    ),
+  ),
+);
+```
+
+The _leftColumn_ variable contains the ratings and icons rows, as well as the title and text that describes the Pavlova:
+
+```
+final leftColumn = Container(
+  padding: EdgeInsets.fromLTRB(20, 30, 20, 20),
+  child: Column(
+    children: [
+      titleText,
+      subTitle,
+      ratings,
+      iconList,
+    ],
+  ),
+);
+```
+
+The left column is placed in a **Container** to constrain its width. Finally, the UI is constructed with the entire row (containing the left column and the image) inside a _Card_.
+
+The _Pavlova image_ is from _Pixabay_. You can embed an image from the net using **Image.network()** but, for this example, the image is saved to an images directory in the project, added to the **pubspec** file, and accessed using **Images.asset()**. For more information, see Adding assets and images.
+
+```
+body: Center(
+  child: Container(
+    margin: EdgeInsets.fromLTRB(0, 40, 0, 30),
+    height: 600,
+    child: Card(
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            width: 440,
+            child: leftColumn,
+          ),
+          mainImage,
+        ],
+      ),
+    ),
+  ),
+),
+```
+
+---
+
+</br>
+
+## [Common layout widgets](https://flutter.dev/docs/development/ui/layout#common-layout-widgets)
+
+The following widgets fall into two categories: standard widgets from the [widgets library](https://api.flutter.dev/flutter/widgets/widgets-library.html), and specialized widgets from the [Material library](https://api.flutter.dev/flutter/material/material-library.html). Any app can use the widgets library but only Material apps can use the Material Components library.
+
+### [Standard widgets](https://flutter.dev/docs/development/ui/layout#standard-widgets)
+
+* [Container](https://flutter.dev/docs/development/ui/layout#container): Adds padding, margins, borders, background color, or other decorations to a widget.
+* [GridView](https://flutter.dev/docs/development/ui/layout#gridView): Lays widgets out as a scrollable grid.
+* [ListView](https://flutter.dev/docs/development/ui/layout#listView): Lays widgets out as a scrollable list.
+* [Stack](https://flutter.dev/docs/development/ui/layout#stack): Overlaps a widget on top of another.
+
+### [Material widgets](https://flutter.dev/docs/development/ui/layout#material-widgets)
+
+* [Card](https://flutter.dev/docs/development/ui/layout#card): Organizes related info into a box with rounded corners and a drop shadow.
+* [ListTile](https://flutter.dev/docs/development/ui/layout#listtile): Organizes up to 3 lines of text, and optional leading and trailing icons, into a row.
+
+### [Container](https://flutter.dev/docs/development/ui/layout#container)
+
+Many layouts make liberal use of **Container**s _to separate widgets using padding, or to add borders or margins_. You can _change the device’s background_ by placing the entire layout into a Container and _changing its background color or image_.
+
+![image](https://user-images.githubusercontent.com/29271126/98676144-9108a580-239e-11eb-8829-5100b565cb5e.png)
+
+
+#### Summary (Container)
+
+* Add padding, margins, borders
+* Change background color or image
+* Contains a single child widget, but that child can be a Row, Column, or even the root of a widget tree
+
+#### Examples (Container)
+
+![image](https://user-images.githubusercontent.com/29271126/98676350-d62cd780-239e-11eb-8e82-d218fd0682be.png)
+
+App source: [container](https://github.com/flexboni/flutter_tutorial/tree/master/examples/development/buildingLayouts/container)
+
+---
+
+### [GridView](https://flutter.dev/docs/development/ui/layout#gridview)
+
+Use **GridView** to lay widgets out as _a two-dimensional list_. **GridView** provides two pre-fabricated lists, or you can build your own custom grid. When a **GridView** detects that its contents are too long to fit the render box, it automatically scrolls.
+
+#### Summary (GridView)
+
+* Lays widgets out in a grid
+* Detects when the column content exceeds the render box and automatically provides scrolling
+* Build your own custom grid, or use one of the provided grids:
+  * GridView.count allows you to specify the number of columns
+  * GridView.extent allows you to specify the maximum pixel width of a tile
+
+#### Example (Grid)
+
+![image](https://user-images.githubusercontent.com/29271126/98680281-85b87880-23a4-11eb-8777-e6fc12b0954c.png)
+
+Uses GridView.extent to create a grid with tiles a maximum 150 pixels wide.
+
+App source: [grid](https://github.com/flexboni/flutter_tutorial/tree/master/examples/development/buildingLayouts/grid)
+
+---
+
+### [ListView](https://flutter.dev/docs/development/ui/layout#listview)
+
+**ListView**, a column-like widget, automatically provides scrolling when its content is too long for its render box.
+
+#### Summary (ListView)
+
+* A specialized Column for organizing a list of boxes
+* Can be laid out horizontally or vertically
+* Detects when its content won’t fit and provides scrolling
+* Less configurable than Column, but easier to use and supports scrolling
+
+#### Examples (ListView)
+
+![image](https://user-images.githubusercontent.com/29271126/98681866-910ca380-23a6-11eb-9526-804a169518d3.png)
+
+Uses **ListView** to display a list of businesses using **ListTile**s. A **Divider** separates the theaters from the restaurants.
+
+App source: [list](https://github.com/flexboni/flutter_tutorial/tree/master/examples/development/buildingLayouts/list)
+
+---
+
+### [Stack](https://flutter.dev/docs/development/ui/layout#stack)
+
+Use **Stack** to arrange widgets on top of a base widget—often an image. The widgets can completely or partially overlap the base widget.
+
+#### Summary (Stack)
+
+* Use for widgets that overlap another widget
+* The first widget in the list of children is the base widget; subsequent children are overlaid on top of that base widget
+* A Stack’s content can’t scroll
+* You can choose to clip children that exceed the render box
+
+#### Examples (Stack)
+
+![image](https://user-images.githubusercontent.com/29271126/98683079-f90fb980-23a7-11eb-8214-51ac220ec53a.png)
+
+Uses **Stack** to overlay a **Container** (that displays its **Text** on a translucent black background) on top of a **CircleAvatar**. The **Stack** offsets the text using the _alignment_ property and **Alignment**s.
+
+App source: [stack](https://github.com/flexboni/flutter_tutorial/tree/master/examples/development/buildingLayouts/stack)
+
+---
+
+### [Card](https://flutter.dev/docs/development/ui/layout#card)
+
+A **Card**, from the [Material library](https://api.flutter.dev/flutter/material/material-library.html), contains related nuggets of information and can be composed from almost any widget, but is often used with **ListTile**. **Card** has a single child, but its child can be a column, row, list, grid, or other widget that supports multiple children. By default, a **Card** shrinks its size to 0 by 0 pixels. You can use _SizedBox_ to constrain the size of a card.
+
+In Flutter, a **Card** features slightly rounded corners and a drop shadow, giving it a 3D effect. Changing a Card’s _elevation_ property allows you to control the drop shadow effect. Setting the elevation to 24, for example, visually lifts the **Card** further from the surface and causes the shadow to become more dispersed. For a list of supported elevation values, see _Elevation_ in the [Material guidelines](https://material.io/design). Specifying an unsupported value disables the drop shadow entirely.
+
+#### Summary (Card)
+
+* Implements a Material card
+* Used for presenting related nuggets of information
+* Accepts a single child, but that child can be a Row, Column, or other widget that holds a list of children
+* Displayed with rounded corners and a drop shadow
+* A Card’s content can’t scroll
+* From the Material library
+
+#### Examples (Card)
+
+![image](https://user-images.githubusercontent.com/29271126/98686003-6709b000-23ab-11eb-9922-28e02318c9ed.png)
+
+A **Card** containing 3 **ListTiles** and sized by wrapping it with a **SizedBox**. A _Divider_ separates the first and second ListTiles.
+
+App source: [card](https://github.com/flexboni/flutter_tutorial/tree/master/examples/development/buildingLayouts/card)
+
+---
+
+### [ListTile](https://flutter.dev/docs/development/ui/layout#listtile)
+
+Use **ListTile**, a specialized row widget from the [Material library](https://api.flutter.dev/flutter/material/material-library.html), for an easy way to create a row containing up to 3 lines of text and optional leading and trailing icons. **ListTile** is most commonly used in **Card** or **ListView**, but can be used elsewhere.
+
+#### Summary (ListTile)
+
+* A specialized row that contains up to 3 lines of text and optional icons
+* Less configurable than Row, but easier to use
+* From the [Material library](https://api.flutter.dev/flutter/material/material-library.html)
+
+#### Examples (ListTile)
+
+![image](https://user-images.githubusercontent.com/29271126/98686003-6709b000-23ab-11eb-9922-28e02318c9ed.png)
+
+A **Card** containing 3 **ListTiles**.
+
+App source: [card](https://github.com/flexboni/flutter_tutorial/tree/master/examples/development/buildingLayouts/card)
+
+---
+
+### [Constraints](https://flutter.dev/docs/development/ui/layout#constraints)
+
+To fully understand Flutter’s layout system, you need to learn how Flutter positions and sizes the components in a layout. For more information, see [Understanding constraints](https://flutter.dev/docs/development/ui/layout/constraints).
