@@ -20,70 +20,36 @@ class _ParentWigetState extends State<ParentWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        child: TapboxC(
-      active: _active,
-      onChanged: _handleTapboxChanged,
-    ));
+        child: TapboxB(active: _active, onChanged: _handleTapboxChanged));
   }
 }
 
-class TapboxC extends StatefulWidget {
-  TapboxC({Key key, this.active: false, @required this.onChanged})
+class TapboxB extends StatelessWidget {
+  TapboxB({Key key, this.active: false, @required this.onChanged})
       : super(key: key);
 
   final bool active;
   final ValueChanged<bool> onChanged;
 
-  _TapboxCState createState() => _TapboxCState();
-}
-
-class _TapboxCState extends State<TapboxC> {
-  bool _higlight = false;
-
-  void _handleTapDown(TapDownDetails details) {
-    setState(() {
-      _higlight = true;
-    });
-  }
-
-  void _handleTapUp(TapUpDetails details) {
-    setState(() {
-      _higlight = false;
-    });
-  }
-
-  void _handleTapCancel() {
-    setState(() {
-      _higlight = false;
-    });
-  }
-
   void _handleTap() {
-    widget.onChanged(!widget.active);
+    onChanged(!active);
   }
 
   Widget build(BuildContext context) {
-    // This example adds a green border on tap down.
-    // On tap up, the square changes to the opposite state.
     return GestureDetector(
-      onTapDown: _handleTapDown,
-      onTapUp: _handleTapUp,
       onTap: _handleTap,
-      onTapCancel: _handleTapCancel,
       child: Container(
         child: Center(
           child: Text(
-            widget.active ? 'Active' : 'Inactive',
+            active ? 'Active' : 'Inactive',
             style: TextStyle(fontSize: 32.0, color: Colors.white),
           ),
         ),
         width: 200.0,
         height: 200.0,
         decoration: BoxDecoration(
-            color: widget.active ? Colors.lightGreen[700] : Colors.black,
-            border: _higlight
-                ? Border.all(color: Colors.teal[700], width: 10.0)
-                : null),
+          color: active ? Colors.lightGreen[700] : Colors.black,
+        ),
       ),
     );
   }
