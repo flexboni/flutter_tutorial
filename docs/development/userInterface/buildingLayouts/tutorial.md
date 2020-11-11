@@ -6,6 +6,8 @@
 * How to lay out widgets vertically and horizontally.
 * How to build a Flutter layout.
 
+App source: [tutorial](https://github.com/flexboni/flutter_tutorial/tree/master/examples/development/buildingLayouts/tutorial)
+
 This is a guide to building layouts in Flutter. You’ll build the layout for the following app:
 
 ![image](https://user-images.githubusercontent.com/29271126/98753876-b6ca9480-2408-11eb-84a4-1c1e7c23ac53.png)
