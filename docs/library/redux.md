@@ -3,7 +3,8 @@
 ## 목차
 
 * [Redux란 무엇인가?](#redux란-무엇인가) 
-* [Redux의 주요 관점](#redux의-주요-관점) 
+* [Redux의 주요 관점](#redux의-주요-관점)
+* [Redux Thunk란 무엇인가?]() 
 * [예제](#예제) 
 * [참고](#참고) 
   
@@ -46,13 +47,28 @@
 
 </br>
 
+## Redux Thunk란 무엇인가?
+
+Redux Thunk는 함수를 action으로 disptach하는데 도움이 되는 redux 미들웨어이다. 내부적으로 하나의 작업을 수행하고 전달 된 action이 함수인지 확인한 다음, 호출하고 store를 전달한다.
+
+## Flutter Redux란 무엇인가?
+
+Flutter Redux는 어플리케이션을 Redux store에 연결 시키는 것을 돕는 라이브러리 이다. 세 가지의 위젯을 갖고 있다. **StoreProvider**, **StireBuilder**, **SotreConnector**. 이 위젯들은 내부적으로 Flutter의 _InheritedWidget_을 사용한다. InheritedWidget을 사용하면 Flutter 위젯 트리를 통해 데이터를 주입 할 수 있으므로 그 아래 트리 내의 모든 위젯이 해당 데이터에 액세스하고 데이터가 변경 될 때마다 스스로를 다시 빌드 할 수 있습니다.
+
+## Fleutter Redux 위젯
+
+* StoreProvider : The base Widget. It will pass the given Redux Store to all descendants that request it.
+* StoreBuilder : A descendant Widget that gets the Store from a StoreProvider and passes it to a Widget builder function.
+* StoreConnector : A descendant Widget that gets the Store from the nearest StoreProvider ancestor, converts the Store into a ViewModel with the given converter function, and passes the ViewModel to a builder function. Any time the Store emits a change event, the Widget will automatically be rebuilt. No need to manage subscriptions!
+
 ## 예제
+
+App source: [example](https://github.com/flexboni/flutter_tutorial/tree/master/examples/library/redux/)
 
 ### 초급
 
 * [Counter](https://gitlab.com/brianegan/flutter_redux/tree/master/example)
 * [mahmudahsan_example](https://github.com/mahmudahsan/flutter/tree/master/flutter/states_redux)
-* [thisisamir98/flutter_redux_example](https://github.com/thisisamir98/flutter_redux_example)
 
 ### 중급
 
