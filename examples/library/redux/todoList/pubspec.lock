@@ -50,13 +50,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.0"
-  english_words:
-    dependency: "direct main"
-    description:
-      name: english_words
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "3.1.5"
   fake_async:
     dependency: transitive
     description:
@@ -70,7 +63,7 @@ packages:
     source: sdk
     version: "0.0.0"
   flutter_redux:
-    dependency: "direct main"
+    dependency: "direct dev"
     description:
       name: flutter_redux
       url: "https://pub.dartlang.org"
@@ -81,20 +74,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  http:
-    dependency: "direct main"
-    description:
-      name: http
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.12.2"
-  http_parser:
-    dependency: transitive
-    description:
-      name: http_parser
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "3.1.4"
   matcher:
     dependency: transitive
     description:
@@ -116,22 +95,15 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.8.0-nullsafety.1"
-  pedantic:
-    dependency: transitive
-    description:
-      name: pedantic
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.9.2"
   redux:
-    dependency: transitive
+    dependency: "direct dev"
     description:
       name: redux
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.0.0+3"
   redux_thunk:
-    dependency: "direct main"
+    dependency: "direct dev"
     description:
       name: redux_thunk
       url: "https://pub.dartlang.org"
