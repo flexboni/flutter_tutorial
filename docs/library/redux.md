@@ -53,7 +53,7 @@ Redux Thunk는 함수를 action으로 disptach하는데 도움이 되는 redux �
 
 ## Flutter Redux란 무엇인가?
 
-Flutter Redux는 어플리케이션을 Redux store에 연결 시키는 것을 돕는 라이브러리 이다. 세 가지의 위젯을 갖고 있다. **StoreProvider**, **StireBuilder**, **SotreConnector**. 이 위젯들은 내부적으로 Flutter의 _InheritedWidget_을 사용한다. InheritedWidget을 사용하면 Flutter 위젯 트리를 통해 데이터를 주입 할 수 있으므로 그 아래 트리 내의 모든 위젯이 해당 데이터에 액세스하고 데이터가 변경 될 때마다 스스로를 다시 빌드 할 수 있습니다.
+Flutter Redux는 어플리케이션을 Redux store에 연결 시키는 것을 돕는 라이브러리 이다. 세 가지의 위젯을 갖고 있다. **StoreProvider**, **StoreBuilder**, **StoreConnector**. 이 위젯들은 내부적으로 Flutter의 *InheritedWidget*을 사용한다. *InheritedWidget*을 사용하면 Flutter 위젯 트리를 통해 데이터를 주입 할 수 있으므로 그 아래 트리 내의 모든 위젯이 해당 데이터에 액세스하고 데이터가 변경 될 때마다 스스로를 다시 빌드 할 수 있습니다.
 
 ## Fleutter Redux 위젯
 
