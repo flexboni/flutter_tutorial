@@ -1,10 +1,15 @@
+library built_redux_sample;
+
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(BuilReduxApp());
 }
 
-class MyApp extends StatelessWidget {
+class BuilReduxApp extends StatelessWidget {
+  final store = Store<AppState, AppStateBuilder, AppActions>(
+    
+  );
   @override
   Widget build(BuildContext context) {
     // TODO: implement build

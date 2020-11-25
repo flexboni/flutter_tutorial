@@ -1,6 +1,6 @@
 # 'pubspec.yaml' manages the assets and dependencies
 
-name: flutter_tutorial
+name: built_redux_sample
 description: built redux example
 
 publish_to: "none" # Remove this line if you wish to publish to pub.dev
@@ -11,16 +11,25 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
-  cupertino_icons: ^1.0.0
   flutter:
     sdk: flutter
+  cupertino_icons: ^1.0.0
+  flutter_built_redux:
+  built_redux:
+  built_value:
+  built_collection:
 
 dev_dependencies:
-  redux: ^4.0.0+3
-  flutter_redux: ^0.6.0
-  redux_thunk: ^0.3.0
   flutter_test:
     sdk: flutter
+  flutter_driver:
+    sdk: flutter
+  test:
+  build:
+  build_runner:
+  built_value_generator:
+  source_gen:
+  mockito:
 
 flutter:
   uses-material-design: true
