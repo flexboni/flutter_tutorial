@@ -1,7 +1,7 @@
 # 'pubspec.yaml' manages the assets and dependencies
 
 name: flutter_tutorial
-description: My base flutter source and tutorial package.
+description: built redux example
 
 publish_to: "none" # Remove this line if you wish to publish to pub.dev
 

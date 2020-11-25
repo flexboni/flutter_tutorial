@@ -1,27 +1,51 @@
-# flutter_tutorial
+# [built redux](https://github.com/brianegan/flutter_architecture_samples/tree/master/built_redux)
 
-A new Flutter project.
+An example Todo app created with built_value](https://pub.dartlang.org/packages/built_value), [built_redux](https://pub.dartlang.org/packages/built_redux), and [flutter_built_redux](https://pub.dartlang.org/packages/flutter_built_redux).
 
-## Getting Started
+## Key Concepts
 
-This project is a starting point for a Flutter application.
+  * Most of the Key Concepts from the [Redux Example](../redux) apply to this example as well, but the implementations are slightly different.
+  * To enforce immutability, `built_redux` apps require you to use a `built_value` Value Object.
+  * To increase discoverability, all actions are created using `built_redux` and attached to the `Store`.
+  * To use `built_value` and `built_redux`, you must add a `build.yaml` file to your project.
+  * To help with Type Safety, Reducers and Middleware can be created with `ReducerBuilder` and `MiddlewareBuilder` classes.
 
-A few resources to get you started if this is your first Flutter project:
+## Enforcing Immutability
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+The `State` objects in your app need to be created with `built_value`. `built_value` is a library that generate "Value Classes" from a Class template that you write.
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+The Value classes can not be directly modified, but instead must be updated by creating a new version of the object.
 
-## Note
+## Actions Discoverability
 
-- you’ll want to use Flutter’s “profile” or “release” build modes. For more details, see [Flutter’s build modes](https://flutter.dev/docs/testing/build-modes)
-- Important: If you’re concerned about the package size of your app, see [Measuring your app’s size](https://flutter.dev/docs/perf/app-size)
-- This codelab is part 1 of a two-part codelab. You can find part 2 on [Google Developers Codelabs](https://codelabs.developers.google.com/codelabs/first-flutter-app-pt2/#0) (as well as a copy of this codelab, part 1).
+One benefit of `built_redux` is that it attaches all possible actions to your store. This makes it very easy to see which actions are available for dispatch within your IDE using autocompletion.
 
-## Docs
+## Build.yaml
 
-I'm studying Flutter in Flutter dev Homepage, and Note some information.
-Check in Docs directory
+In order to use `built_redux` and `built_value`, you need to create a `build.yaml` file in your project. Whenever you update your Value Classes or Redux Actions you'll need to run the build command: `flutter pub pub run build_runner build`. Instead of running the `build` command, **you can run the `watch` command: `flutter pub pub run build_runner watch`.** This will watch for changes and trigger a rebuild every time you make updates. This tends to be much faster overall.
+
+## Type Safety in Reducers and Middleware
+
+As your app grows, you'll want to break reducers and middleware down into smaller functions.
+
+## Differences to Redux
+
+These two libraries are incredibly similar. These are the minor differences:
+
+  * Actions
+    - `built_redux` - Actions are generated for you by `built_redux` based on a definition. They are then attached to the Store upon creation. Each action has a unique name and a generic payload type. Each action can have at most one reducer.
+    - `Redux`, Actions are plain ol' Dart values, Classes or Enums.
+  * Reducers
+    - `built_redux` - Reducers are void functions that mutate a `StateBuilder`. The `StateBuilder` is then built after all reducers have run. Enforces immutability.
+    - `redux` - Reducers are functions in app state and latest action and return a new app state. Since immutability is not enforced, a user could simply mutate the state object instead of returning an updated copy.
+    - Both - Testing is easy, and both libraries have utilities for binding Reducers to Actions of a specific type. 
+  * Middleware
+    - Very little difference here. Both libraries have utilities for binding actions of a specific type to a given Middleware.
+  * Nesting Large State Trees
+    - `built_redux` - Provides helpers for composing large Action trees that you can attach to your Store upon creation. Reducers can be combined via functional composition and by using utilities from the library.
+    - `redux` - No need for nesting actions, nesting reducers can be done via functional composition and by using utilities from the library.
+    - Both - allow you to break down your app into smaller units.
+  * Flutter integration
+    - `built_redux` - Maps from a `State` to `Prop`, which is passed to your `build` method along with your `Actions`. You combine the `Prop` wih the actions in the `build` method.
+    - `redux` - Maps from a `Store` to a `ViewModel`. The `ViewModel` should include both "Props" and callback functions that dispatch actions.
+    - Both - Store a Widget at the top of your tree containing your State. 
