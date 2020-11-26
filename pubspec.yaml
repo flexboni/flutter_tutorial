@@ -13,11 +13,12 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  cupertino_icons: ^1.0.0
   flutter_built_redux:
   built_redux:
   built_value:
   built_collection:
+  todos_app_core:
+    path: todos_app_core
 
 dev_dependencies:
   flutter_test:
@@ -30,6 +31,8 @@ dev_dependencies:
   built_value_generator:
   source_gen:
   mockito:
+  integration_tests:
+    path: integration_tests
 
 flutter:
   uses-material-design: true
