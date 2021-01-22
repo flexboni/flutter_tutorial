@@ -49,3 +49,6 @@ Flutter’s layout engine has a few important limitations:
 
 * Since the parent’s size and position, in its turn, also depends on its own parent, it’s impossible to precisely define the size and position of any widget without taking into consideration the tree as a whole.
 
+* If a child wants a different size from its parent and parent doesn't have enough information to align it, then the child's size might be ignored. **Be specific when difining alignment.**
+
+[Examples](https://github.com/flexboni/flutter_tutorial/tree/master/examples/development/buildingLayouts/constraints)
